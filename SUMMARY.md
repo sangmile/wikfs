@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Initial page](README.md)
+* [What I Know For Sure](README.md)
 
 ## AWS
 
