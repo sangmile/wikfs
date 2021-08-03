@@ -8,7 +8,5 @@ description: What I Know For Sure
 
 ### AWS
 
-* \[AWS\]\(/aws/aws-cooud9/README.md\)
-
 
 
