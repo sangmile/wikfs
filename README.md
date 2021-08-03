@@ -1,2 +1,2 @@
-# wikfs
-What I Know For Sure
+# Initial page
+
