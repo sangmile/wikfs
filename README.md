@@ -8,9 +8,7 @@ description: What I Know For Sure
 
 ### AWS
 
-{% page-ref page="aws/aws-cloud9/" %}
-
-
+* \[AWS\]\(/aws/aws-cooud9/README.md\)
 
 
 
