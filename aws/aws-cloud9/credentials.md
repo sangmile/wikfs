@@ -33,7 +33,7 @@ aws sts get-caller-identity
 
 2. AWS Settings에서 Credentials에서 활성화/비활성화합니다.
 
-![](../../.gitbook/assets/image%20%288%29.png)
+![](../../.gitbook/assets/image%20%289%29.png)
 
 비활성화시 Cloud9 EC2에 연결된 IAM Role이 임시 자격 증명을 관리합니다.  
 비활성화 후 임시 자격 증명을 확인해보면 다음과 같이 출력됩니다.
