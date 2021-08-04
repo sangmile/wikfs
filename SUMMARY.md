@@ -5,8 +5,10 @@
 ## AWS
 
 * [AWS EKS](aws/aws-eks/README.md)
-  * [AWS Fargate](aws/aws-eks/aws-fargate/README.md)
-    * [시작하기](aws/aws-eks/aws-fargate/undefined.md)
+  * [Nodes](aws/aws-eks/nodes/README.md)
+    * [관리 노드](aws/aws-eks/nodes/undefined-2.md)
+    * [AWS Fargate](aws/aws-eks/nodes/aws-fargate/README.md)
+      * [시작하기](aws/aws-eks/nodes/aws-fargate/undefined.md)
   * [클러스터 인증](aws/aws-eks/undefined/README.md)
     * [유저 관리](aws/aws-eks/undefined/undefined.md)
   * [IAM OpenID Connect\(OIDC\) Provider](aws/aws-eks/iam-openid-connect-oidc-provider.md)

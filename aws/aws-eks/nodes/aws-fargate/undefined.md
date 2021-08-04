@@ -29,7 +29,7 @@ Fargate에서 Pod를 스케줄링하려면 먼저 Fargate를 사용하는 pod를
 1. EKS 콘솔 접속 후 Add Fargate Profile 클릭합니다.  
 
 
-   ![](../../../.gitbook/assets/image%20%2816%29.png)
+   ![](../../../../.gitbook/assets/image%20%2816%29.png)
 
 2. Configure Fargate profile 페이지에서는 다음 정보를 입력한 뒤, 다음을 클릭합니다.  
    - Name  
@@ -38,7 +38,7 @@ Fargate에서 Pod를 스케줄링하려면 먼저 Fargate를 사용하는 pod를
    Subnets에는 기본적으로 모든 Subnet이 선택되어 있습니다. Fargate에서는 Private Subnet만 지원하기 때문에 Private Subnet만 선택해야 합니다.  
 
 
-   ![](../../../.gitbook/assets/image%20%2813%29.png)
+   ![](../../../../.gitbook/assets/image%20%2813%29.png)
 
 3. Configure pod selection 페이지에서는 다음 정보를 입력합니다.  
    - Namespace  
@@ -47,7 +47,7 @@ Fargate에서 Pod를 스케줄링하려면 먼저 Fargate를 사용하는 pod를
    특정 네임스페이스에 있는 Pod 중 label을 추가하여 selector와 일치하는 Pod만 배포합니다. `infra: fargate`와 같이 입력합니다.  
 
 
-   ![](../../../.gitbook/assets/image%20%2817%29.png)
+   ![](../../../../.gitbook/assets/image%20%2817%29.png)
 
 ## CoreDNS 업데이트하기
 
