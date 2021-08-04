@@ -79,5 +79,21 @@ coredns-6b679c7d9b-7m7hj   1/1     Running   0          103s
 coredns-6b679c7d9b-sz8hl   1/1     Running   0          103s
 ```
 
+### Fargate 확인하기
+
+아래 명령을 통해 Fargate 노드를 확인합니다.
+
+```bash
+kubectl get nodes
+```
+
+출력
+
+```bash
+NAME                                                    STATUS     ROLES    AGE   VERSION
+fargate-ip-192-168-209-71.us-west-2.compute.internal    Ready      <none>   67m   v1.21.2-13+d2965f0db10712
+fargate-ip-192-168-251-107.us-west-2.compute.internal   Ready      <none>   67m   v1.21.2-13+d2965f0db10712
+```
+
 
 
