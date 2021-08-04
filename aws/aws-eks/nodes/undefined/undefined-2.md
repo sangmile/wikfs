@@ -1,10 +1,4 @@
-# 관리 노드
-
-Amazon EKS 관리 노드 그룹은 Amazon EKS 쿠버네티스 클러스터의 노드\(EC2\) 프로비저닝 및 수명 주기 관리를 자동화합니다.
-
-모든 관리 노드는 Amazon EKS에서 관리하는 Amazon EC2 Auto Scaling 그룹의 일부로 프로비저닝됩니다.
-
-## 노드 IAM Role
+# 노드 IAM role
 
 Amazon EKS 노드 kubelet 데몬은 사용자를 대신하여 AWS API를 호출합니다.노드는 IAM 인스턴스 프로파일을 통해 이러한 API 호출에 대한 사용 권한을 가집니다. 노드를 생성하기 전에 다음 IAM 정책을 사용하여 IAM 역할을 생성해야 합니다.
 
@@ -25,5 +19,5 @@ Amazon EKS 노드 kubelet 데몬은 사용자를 대신하여 AWS API를 호출�
 위에서 CloudFormation으로 생성한 IAM role에는 AmazonEKS\_CNI\_Policy 정책이 포함되어 있습니다. CNI 플러그인에 사용되는 aws-node ServiceAccount에 이 정책을 할당하는 것이 좋습니다.
 {% endhint %}
 
-![CloudFormation&#xC73C;&#xB85C; &#xC0DD;&#xC131;&#xD55C; IAM role&#xC5D0; &#xBD80;&#xC5EC;&#xB41C; policy](../../../.gitbook/assets/image%20%2818%29.png)
+![CloudFormation&#xC73C;&#xB85C; &#xC0DD;&#xC131;&#xD55C; IAM role&#xC5D0; &#xBD80;&#xC5EC;&#xB41C; policy](../../../../.gitbook/assets/image%20%2818%29.png)
 
