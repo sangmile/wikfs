@@ -5,6 +5,7 @@
 ## AWS
 
 * [AWS EKS](aws/aws-eks/README.md)
+  * [AWS Fargate](aws/aws-eks/aws-fargate.md)
   * [클러스터 인증](aws/aws-eks/undefined/README.md)
     * [유저 관리](aws/aws-eks/undefined/undefined.md)
   * [IAM OpenID Connect\(OIDC\) Provider](aws/aws-eks/iam-openid-connect-oidc-provider.md)
