@@ -58,13 +58,17 @@ metadata:
  "`Error from server (NotFound): configmaps "aws-auth" not found`" 에러 발생 시 아래 URL을 참고바랍니다.  
 [https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html)
 
-아래와 같이 IAM user를 추가합니다.
+아래와 같이 IAM user 또는 IAM Role를 추가합니다.
 
 ```yaml
 ...
 data:
   mapRoles: |
+    ...
     - groups:
+      - system:masters
+      rolearn: arn:aws:sts::111122223333:assumed-role/admin/cloud9instanceid
+      username: cloud9
     ...
   mapUsers: |
     - userarn: <arn:aws:iam::111122223333:user/admin>
@@ -80,19 +84,19 @@ data:
 configmap/aws-auth edited
 ```
 
- 위에서 추가한 IAM User로 kubectl 명령을 통해 클러스터에 자격 증명을 합니다.
+ 위에서 추가한 IAM User 또는 IAM Role\(Cloud9의 경우\)로 kubectl 명령을 통해 클러스터에 자격 증명을 합니다.
 
 ```yaml
 aws sts get-caller-identity
 ```
 
- 출력에서 볼 수 있듯이 위에서 추가한 userarn과 동일한 사용자 테스트를 합니다.
+ 출력에서 볼 수 있듯이 위에서 추가한 IAM Role과 동일한 사용자 테스트를 합니다.
 
 ```yaml
 {
     "Account": "111122223333", 
-    "UserId": "USERID", 
-    "Arn": "arn:aws:iam::111122223333:user/admin"
+    "UserId": "userid", 
+    "Arn": "arn:aws:sts::111122223333:assumed-role/admin/cloud9instanceid"
 }
 ```
 
@@ -106,6 +110,7 @@ kubectl get svc
  다음과 같이 출력되어야 합니다.
 
 ```yaml
-
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   30h
 ```
 
