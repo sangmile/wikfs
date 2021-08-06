@@ -4,7 +4,7 @@
 
 ## AWS
 
-* [AWS EKS](aws/aws-eks/README.md)
+* [Amazon EKS](aws/aws-eks/README.md)
   * [Nodes](aws/aws-eks/nodes/README.md)
     * [관리노드그룹](aws/aws-eks/nodes/undefined/README.md)
       * [노드 IAM role](aws/aws-eks/nodes/undefined/undefined-2.md)
