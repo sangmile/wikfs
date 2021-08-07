@@ -27,3 +27,9 @@
   * [Installation](iac/ansible/installation-1.md)
   * [index](iac/ansible/installation.md)
 
+## PYTHON
+
+* [Python](python/python/README.md)
+  * [파이썬 기초](python/python/undefined.md)
+  * [고급 문자열 기능](python/python/undefined-1.md)
+
