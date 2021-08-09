@@ -244,5 +244,290 @@ max와 min 함수는 각각 항목 중 가장 큰 항목과 가장 작은 항목
 
 sorted와 reversed 함수는 sort와 reverse 메서드와 유사하다. 하지만 메서드는 리스트 값을 바로 변경하는 반면 함수는 새로운 리스트를 생성한다.
 
+이 두 함수는 리스트뿐만 아니라 튜플, 문자열에서도 동작하며, sorted 함수는 항상 신규 리스트를 생성하여 반환한다.
 
+reversed 함수는 컬렉션 대신 이터러블\(iterable\)을 반환한다. 반환된 이터러블을 for 루프를 사용하여 리스트나 튜플로 변환해야 사용할 수 있다.
+
+```python
+>>> a_tup=(1,2,3,4)
+>>> for i in reversed(a_tup):
+...   print(i, end=' ')
+... 
+4 3 2 1
+```
+
+다음 코드와 동일하다.
+
+```python
+>>> print(tuple(reversed(a_tup)))
+(4, 3, 2, 1)
+```
+
+sum 함수는 int나 float와 같은 숫자 타입에만 사용할 수 있다.
+
+## 리스트 메서드: 리스트 수정하기
+
+리스트는 신규 리스트를 생성하는 대신 데이터를 직접 수정할 수 있는 여러 메서드가 있다.
+
+```python
+list.append(value)        # 항목 추가
+list.clear()              # 모든 항목 제거
+list.extend(iterable)     # 하위 리스트 추가
+list.insert(index, value) # index 위치에 value 삽입
+list.remove(value)        # value의 첫 인스턴스 제거
+```
+
+append와 extend의 차이는 append 메서드는 한 항목을 추가하지만 extend 메서드는 컬렉션이나 이터러블의 여러 항목을 추가한다.
+
+```python
+>>> a_lst = [1, 2, 3]
+>>> a_lst.append(4)
+>>> a_lst.extend([5])
+>>> a_lst
+[1, 2, 3, 4, 5]
+>>> a_lst.extend([6,7,8])
+>>> a_lst
+[1, 2, 3, 4, 5, 6, 7, 8
+```
+
+insert 메서드는 해당 인덱스에 위치한 값 바로 앞에 값을 집어넣는다.
+
+```python
+>>> a_lst=[1,2,3]
+>>> a_lst.insert(2,5)
+>>> a_lst
+[1, 2, 5, 3]
+>>> a_lst.insert(100,100)
+>>> a_lst
+[1, 2, 5, 3, 100]
+>>> a_lst.insert(-100,-100)
+>>> a_lst
+[-100, 1, 2, 5, 3, 100]
+```
+
+remove 메서드는 인수로 주어진 값과 동일한 항목을 발견하는 즉시 해당 항목을 제거한다. 제거 대상 값을 발견하지 못하면 ValueError 예외를 발생시킨다.
+
+제거하지 전에 해당 값이 있는지 확인하려면 in, not in 혹은 count 메서드를 활용하자.
+
+다음 예는 최고 점수와 최저 점수를 버리고 나머지 점수들의 평균값을 내는 체조 경기 채점 방식의 예이다.
+
+```python
+def eval_scores(a_lst):
+    a_lst.remove(max(a_lst))
+    a_lst.remove(min(a_lst))
+    return sum(a_lst) / len(a_lst)
+```
+
+## 리스트 메서드: 내용 정보 가져오기
+
+다음 리스트 메서드는 리스트의 정보를 반환한다. count와 index는 기존 리스트의 값을 변경하지 않으며, 튜플에서도 사용할 수 있다.
+
+```python
+list.count(value)                # 인스턴스 개수 반환
+list.index(value[, beg [, end]]) # value의 인덱스 반환
+list.pop([index])                # 인덱스의 값 반환 및 제거
+```
+
+## 리스트 메서드: 재편성하기
+
+아래 두 메서드는 리스트의 항목 순서를 변경하여 리스트 자체를 변경한다.
+
+```python
+list.sort([key=None] [, reverse=False])
+list.reverse()                            # 현재 순서를 뒤집는다.
+```
+
+파이썬 3.0에서 두 메서드를 사용하려면 리스트 모든 항목을 서로 비교할 수 있어야 한다. 전부 문자열이거나 숫자이어야 한다.
+
+{% code title="abc.py" %}
+```python
+def main():
+    my_lst = []
+    while True:
+        s = input('Enter next name: ')
+        if len(s) == 0:
+            break
+        my_lst.append(s)
+    my_lst.sort()
+    print('Here is the sorted list:')
+    for a_word in my_lst:
+        print(a_word, end=' ')
+```
+{% endcode %}
+
+코드를 실행하면 다음과 같다.
+
+```python
+>>> import abc
+>>> abc.main()
+Enter next name: John
+Enter next name: Paul
+Enter next name: George
+Enter next name: Ringo
+Enter next name: Brian
+Enter next name: 
+Here is the sorted list:
+Brian George John Paul Ringo
+```
+
+sort 메서드는 선택적으로 입력할 수 있는 인수가 있다. 첫 번째 인수는 key 인수로, 기본값은 None이다. 이 인수에는 함수를 넣을 수 있는데, 이 함수는 각 값을 인수로 하여 연산 처리를 한 후 값을 반환한다.
+
+문자열 리스트를 정렬한다고 할 때 대소문자를 구분하지 않는다고 해보자.
+
+```python
+>>> def ignore_case(s):
+...     return s.casefold()
+... 
+>>> a_lst=['john', 'Paul', 'George', 'brian', 'Ringo']
+>>> b_lst=a_lst[:]
+>>> a_lst.sort()
+>>> b_lst.sort(key=ignore_case)
+>>> a_lst
+['George', 'Paul', 'Ringo', 'brian', 'john']
+>>> b_lst
+['brian', 'George', 'john', 'Paul', 'Ringo']
+```
+
+reverse 메서드는 리스트의 순서를 뒤집지만, 갑을 정렬하지는 않는다.
+
+```python
+>>> my_lst=['Brian', 'John', 'Paul', 'George', 'Ringo']
+>>> my_lst.reverse()
+>>> for a_word in my_lst:
+...     print(a_word, end=' ')
+... 
+Ringo George Paul John Brian
+```
+
+## 스택 역할을 하는 리스트: RPN 애플리케이션
+
+append와 pop 메서드는 스택 메커니즘인 후입선출\(LIFO\) 장치로 활용한다.
+
+스택 장치의 가장 유용한 데모는 후위 표기법\(Reverse Polish Notation, RPN\) 언어를 번역하는 프로그램이다.
+
+후위 표기법 언어는 연산자를 피연산자 뒤에 위치시키는 언어다. 괄호 기호 없이도 깔끔하고 명확한 방법의 연산식을 표현하는 것이 장점이다.
+
+```python
+10 5 * 7 3 + /
+(10 * 5) / (7 + 3) 과 같다.
+```
+
+가장 큰 장점은 다음 규칙만 지키면 된다는 것이다.
+
+* 다음 항목이 숫자면 스택에 넣는다.
+* 다음 항목이 연산자면 스택 위에서 2개의 항목을 추출한 후 연산자를 반영하여 계산한 값을 다시 스택에 넣는다.
+
+```python
+the_stack = []
+
+def main():
+    s = input('Enter RPN string: ')
+    a_lst = s.split()
+    
+    for item in a_lst:
+        if item in '+-*/' and len(the_stack) > 1:
+            op2 = the_stack.pop()
+            op1 = the_stack.pop()
+            the_stack.append(eval(str(op1) + item + str(op2)))
+        else:
+            the_stack.append(float(item))
+    print(the_stack.pop())
+main()
+```
+
+## reduce 함수
+
+파이썬 리스트의 더욱 흥미로운 기능은 리스트의 모든 항목을 한 번에 처리할 수 있는 함수를 직접 작성하여 사용할 수 있다는 것이다. map이나 filter와 같은 리스트 메서드가 있다.
+
+functools 패키지의 여러 함수를 사용하면 리스트를 다양한 방식으로 처리할 수 있다.
+
+```python
+import functools
+functools.reduct(func, list)
+```
+
+다음과 같이 동작한다.
+
+1. 첫 2개의 항목을 'func'의 인수로 넣고, 결괏값을 기억한다.
+2. 위 결과와 세 번째 항목을 'func'의 인수로 넣어서 처리된 결과를 기억한다.
+3. 위 결과와 네 번째 항목을 'func'의 인수로 넣어서 처리된 결과를 반환한다.
+
+```python
+import functools
+
+def add_func(a, b):
+    return a + b
+
+def multi_func(a, b):
+    return a * b
+
+n = 5
+a_lst = list(range(1, n+1)
+
+triangle_num = functools.reduce(add_func, a_lst) # 1 + 2 + 3 + 4 + 5
+fact_num = functools.reduce(multi_func, a_lst)   # 1 * 2 * 3 * 4 * 5
+```
+
+## 람다 함수
+
+리스트에 연산 처리를 할 때 1회용 함수를 만들 때 사용하는 함수이다.
+
+```python
+lambda args: ret
+```
+
+reduce 함수와 함께 사용하는 경우가 많다.
+
+```python
+t5 = functools.reduce(lambda x, y: x+y, [1,2,3,4,5])
+f5 = functools.reduce(lambda x, y: x*y, [1,2,3,4,5])
+```
+
+## 리스트 함축
+
+리스트 함축은 리스트에서 열거식의 값을 생성하는 코드를 좀 더 간결하게 만든다. 딕셔너리, 세트와 다른 컬렉션에서도 사용할 수 있다.
+
+항목 간 복사하는 방법들이다.
+
+```python
+1.
+b_lst = a_lst[:]
+
+2.
+b_lst = []
+for i in a_lst:
+    b_lst.append(i)
+
+3.
+b_lst = [i for i in a_lst]
+```
+
+`for_문_표현식`
+
+```python
+b_lst = [ i * i for i in a_lst ]
+```
+
+ `for_문_표현식 if_조건문` 
+
+```python
+my_lst = [10, -10, -1, 12, -500, 13, 15, -3]
+
+new_lst = []
+for i in my_lst:
+    if i > 0 :
+        new_lst.append(i)
+
+new_lst = [ i for i in my_lst if i > 0 ]
+```
+
+대입 연산자 우측은 크게 세 가지로 나뉜다.
+
+* 값 표현식 i는 리스트 값을 바로 가져온다.
+* for 문 표현식 for i in my\_lst는 연산할 열거형 값을 제공한다.
+* 마지막으로 if 조건문 if i &gt; 0은 선택할 항목을 선별한다.
+
+## 딕셔너리와 세트의 함축
+
+리스트 함축 원칙은 세트와 딕셔너리까지 확장된다.
 
