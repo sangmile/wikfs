@@ -32,4 +32,5 @@
 * [Python](python/python/README.md)
   * [파이썬 기초](python/python/undefined.md)
   * [고급 문자열 기능](python/python/undefined-1.md)
+  * [고급 리스트 기능](python/python/undefined-2.md)
 
