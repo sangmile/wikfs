@@ -4,6 +4,7 @@
 
 ## AWS
 
+* [AWS Elastic Beanstalk](aws/aws-elastic-beanstalk.md)
 * [Amazon EKS](aws/aws-eks/README.md)
   * [Nodes](aws/aws-eks/nodes/README.md)
     * [관리 노드 그룹](aws/aws-eks/nodes/undefined/README.md)
