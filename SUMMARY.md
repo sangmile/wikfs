@@ -4,6 +4,7 @@
 
 ## AWS
 
+* [AWS Services](aws/aws-services.md)
 * [AWS Elastic Beanstalk](aws/aws-elastic-beanstalk.md)
 * [AWS Storage Gateway](aws/aws-storage-gateway.md)
 * [AWS Trusted Advisor](aws/aws-trusted-advisor.md)
