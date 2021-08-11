@@ -6,6 +6,7 @@
 
 * [AWS Elastic Beanstalk](aws/aws-elastic-beanstalk.md)
 * [AWS Storage Gateway](aws/aws-storage-gateway.md)
+* [AWS Trusted Advisor](aws/aws-trusted-advisor.md)
 * [Amazon EKS](aws/aws-eks/README.md)
   * [Nodes](aws/aws-eks/nodes/README.md)
     * [관리 노드 그룹](aws/aws-eks/nodes/undefined/README.md)
