@@ -1,0 +1,554 @@
+# 팁, 커맨드라인, 그리고 패키지
+
+이 페이지에서 정리할 내용입니다.
+
+* 개요
+* 22가지 프로그래밍 
+* 커맨드 라인에서 파이썬 실행하기
+* doc string 작성하고 사용하기
+* 패키지 탑재하기
+* 파이썬 패키지의 가이드 투어
+* 일급 객체인 함수
+* 가변 길이 인수 리스트
+* 데코레이터와 함수 프로파일러
+* 제너레이터
+* 커맨드 라인 인수 접근하기
+
+## 개요
+
+개발 시간을 줄일 수 있는 22가지 프래그래밍 기법과 패키지들을 살펴볼 것이다.
+
+## 22가지 프래그래밍 팁
+
+파이썬 코드를 간단 명료하게 해 주는 가장 일반적인 기법이다.
+
+* 필요하다면 코드를 여러 줄에 걸쳐서 작성하자
+* for 루프는 현명하게 사용하자
+* 대입 연산자 조합을 이해하자
+* 다중 대입을 사용하자
+* 튜플 대입을 사용하자
+* 고급 튜플 대입을 사용하자
+* 리스트와 문자열 '곱하기'를 사용하자
+* 다중 값을 반환하자
+* 루프와 else 키워드를 사용하자
+* Boolean과 'not'의 이점을 활용하자
+* 문자열은 문자의 나열로 다루자
+* replace를 사용하여 문자를 제거하자
+* 필요 없는 루프는 사용하지 말자
+* 연결된 비교 연산자를 사용하자
+* 함수 테이블\(리스트, 딕셔너리\)로 switch 문을 모방하자
+* is 연산자는 정확하게 사용하자
+* 단일 행 for 루프를 사용하자
+* 여러 문장을 하나의 행으로 줄이자
+* 단일 행 if/then/else 문을 작성하자
+* range와 함께 Enum을 생성하자
+* IDLE 안에서 비효율적인 print 함수 사용을 줄이자
+* 큰 번호 안에 언더스코어를 넣
+
+###  필요하다면 코드를 여러 줄에 걸쳐서 작성하자
+
+역슬래시를 사용하자.
+
+```python
+my_str = 'Hi,' \
+' There!'
+```
+
+괄호를 사용하자.
+
+```python
+my_str = ('Hi, '
+'There!',
+'This is Sangmin!')
+```
+
+### for 루프는 현명하게 사용하자
+
+range와 인덱스를 사용한 C 언어 스타일의 for 루프이다.
+
+```python
+name_list = ['John', 'Paul', 'George', 'Ringo']
+for i in range(len(name_list)):
+    print(name_list[i])
+```
+
+위처럼 코드를 작성하기 보다는 리스트나 이터레이터의 내용을 직접 출력하는 것이 좋다.
+
+```python
+name_list = ['John', 'Paul', 'George', 'Ringo']
+for i in name_list:
+    print(i)
+```
+
+번호를 생성하려면 enumerate 함수를 사용하자.
+
+```python
+name_list = ['John', 'Paul', 'George', 'Ringo']
+for i, name in enumerate(name_list, 1):
+    print(i, '. ', name, sep='')
+```
+
+출력은 다음과 같다.
+
+```python
+1. John
+2. Paul
+3. George
+4. Ringo
+```
+
+{% hint style="info" %}
+인덱스를 사용하지 않고 변수 값을 변경하려고 하면 변수가 참조하고 있던 객체 값이 변경되는 것이 아니라, 신규 객체가 생성되어 해당 변수에 대입이 된다.  
+for name in name\_list:  
+    name = 'Sangmin'  
+실제 리스트의 항목이 변경되지 않는다.
+{% endhint %}
+
+### 대입 연산자 조합을 이해하자
+
+연산자 &, \|, ^는 각각 'and', 'or', 'exclusive or' 비트 연산자이다. 연산자 &lt;&lt;와 &gt;&gt;는 각각 비트를 왼쪽과 오른쪽으로 옮긴다.
+
+대입 연산자는 피연산자의 가변 유무에 따라 객체 값 변경 유무를 결정한다. 값을 바로 변경한다는 것은 새로운 객체를 생성하지 않고 메모리에 있는 데이터를 변경한다는 의미다. 이런 연산은 빠르고 효율적이다.
+
+정수, 부동소수점 숫자와 문자열은 불변의 성질을 가진다. 이런 데이터 타입과 함께 사용된 대입 연산자는 객체 값을 직접 바꾸지 않고 새로운 객체를 생성하여 다시 대입해야 한다.
+
+```python
+s1 = s2 = 'A string.'
+s1 += '...with more stuff!'
+print('s1:', s1)
+print('s2:', s2)
+```
+
+출력 결과는 다음과 같다.
+
+```python
+s1: A string....with more stuff!
+s2: A string.
+```
+
+s1에 새로운 값이 대입될 때 완전히 새로운 문자열을 대입한다. 하지만 s2는 여전히 기존 문자열 데이터를 참조하고 있기 때문에 s1과 s2는 서로 다른 값을 가진다.
+
+하지만 리스트는 가변적이며, 메모리의 값을 직접 변경할 수 있다.
+
+```python
+a_list = b_list = [10, 20]
+a_list += [30, 40]
+print('a_list:', a_list)
+print('b_list:', b_list)
+```
+
+출력은 다음과 같다.
+
+```python
+a_list: [10, 20, 30, 40]
+b_list: [10, 20, 30, 40]
+```
+
+`a_list`에 신규 리스트가 대입되지 않았기 때문에 `b_list`는 메모리의 동일한 데이터를 참조하고 있다.
+
+값을 직접 변경하는 연산 대부분은 효율적이다. 값을 직접 변경하지 않는 연산은 신규 객체가 생성되어야 하기 때문에 덜 효율적이다. 큰 문자열을 만들 때 처리 속도가 중요하다면 += 연산자 대신 join 메서드를 사용하는 것이 좋다. 다음 예시는 리스트를 생성하여 26개 문자를 연결하기 위해 join 메서드를 사용하는 예시다.
+
+```python
+str_list = []
+n = ord('a')
+for i in range(n, n+26):
+    str_list += chr(i)
+alphabet_str = ''.join(str_list)
+```
+
+### 다중 대입을 사용하자
+
+다중 대입은 파이썬에서 가장 널리 사용되는 코딩 기법이다. 다음과 같이 여러 개의 서로 다른 변수를 모두 같은 값으로 대입할 수 있다.
+
+```python
+a = b = c = d = e = 0
+a is b # True
+```
+
+### 튜플 대입을 사용하자
+
+다중 대입은 여러 변수에 동일한 초깃값을 대입할 때 유용하다.
+
+```python
+a, b = 1, 0
+```
+
+대입 연산자 좌측과 우측 개수가 동일해야 하지만, 여러 단일 값을 하나의 튜플에 대입할 때에는 예외다.
+
+```python
+a = 1, 2, 3 # a는 3개의 값을 지닌 튜플이다.
+```
+
+피보나치 생성 함수를 예로 보자.
+
+```python
+def fibo(n):
+    a, b = 1, 0
+    
+    while a <= n:
+        print(a, end=' ')
+        a, b = a + b, a
+```
+
+대부분의 프로그래밍 언어는 a와 b를 동시에 설정하는 방법을 제공하지 않는다. 일반적으로 임시 변수가 필요하다. 하지만 파이썬에서는 다음 예시도 가능하다.
+
+```python
+x, y = 1, 2
+print(x, y) # 1 2 출
+x, y = y, x
+print(x, y) # 2 1 출
+```
+
+### 고급 튜플 대입을 사용하자
+
+튜플 대입은 정제 기능을 제공하다. 다음과 같이 여러 변수에 튜플 항목을 하나씩 대입하는 튜플 언팩을 할 수 있다.
+
+```python
+tup = 1, 2, 3
+a, b, c = tup
+print(a, b, c) # 1 2 3 출력
+```
+
+1개의 항목을 가지는 튜플을 만들 때에는 다음과 같이 작성해야 한다.
+
+```python
+tup = (a,) # a 항목을 가지는 튜플
+```
+
+별표 기호를 사용하면 나머지 항목들을 담는 리스트가 될 수 있다.
+
+```python
+a, *b = 1, 2, 3, 4, 5
+# a = 1
+# b = [2, 3, 4, 5]
+```
+
+별표 기호는 2개 이상 사용할 수 없다.
+
+### 리스트와 문자열 '곱하기'를 사용하자
+
+몇 만 개의 정수를 0으로 초기화하는 경우, C, 자바와 같은 언어를 사용한다면 큰 차원의 배열을 미리 선언해야 한다.
+
+파이썬은 별도의 데이터 선언이 없다. 큰 리스트를 만드는 방법은 대입 연산자 우측에 값을 넣는 것이다.
+
+```python
+my_list = [0] * 10000
+```
+
+곱하기 기호는 유일한 키를 가지는 딕셔너리와 세트에서는 사용할 수 없다. 하지만 문자열에서는 사용 가능하다.
+
+```python
+divider_str = '_' * 30
+print(divider_str) # ______________________________
+```
+
+### 다중 값을 반환하자
+
+파이썬은 함수에 변수를 전달하여 함수 내부에서 값을 변경한다고 해서 함수 외부에 있는 변수 값이가 변경되지 않는다.
+
+```python
+def double_me(n):
+    n *= 2
+
+a = 10
+double_me(a)
+print(a) # 10
+```
+
+n에 새로운 값이 대입되면 기존 값과 연결이 끊어지기 때문이다. 결국 n은 로컬 변수가 되어 메모리의 다른 영역에 값을 저장하게 된다.
+
+제대로 반영하려면 다음과 같아야 한다.
+
+```python
+def double_me(n):
+     return n * 2
+a = 10
+double_me(a)
+print(a) # 20 출력
+```
+
+제곱근 구하는 함수를 예로 들어보자.
+
+```python
+def quad(a, b, c):
+    determin = (b * b - 4 * a * c) ** 0.5
+    x1 = (-b + determin) / (2 * a)
+    x2 = (-b - determin) / (2 * a)
+    return x1, x2
+```
+
+출력 변수가 2개이므로 다음과 같이 두 인수를 모두 변수로 받아야 하지만, 1개의 변수로 받아도 된다. 1개의 변수로 받으면 튜플이 된다.
+
+```python
+x1, x2 = quad(1, 3, -4) # x1 = 1.0, x2 = -4.0
+x = quad(1, 3, -4)      # x = (1.0, -4.0)
+```
+
+### 루프와 else 키워드를 사용하자
+
+루프와 함께 사용한 else는 루프가 break 문을 만나서 일찍 빠져나오지 않는 한 루프 종료 시 실행된다.
+
+2보다 크고 max보다 작거나 같은 숫자 중 n의 약수가 있는지 확인하 예제를 살펴보자.
+
+```python
+def find_divisor(n, max):
+    for i in range(2, max+1):
+        if n % i == 0:
+            print(i, '는 ', n, '의 약수이다.')
+            break
+    else:
+        print('약수가 없다')
+```
+
+실행 결과는 다음과 같다.
+
+```python
+>>> find_divisor(25,4)
+약수가 없다
+>>> find_divisor(25,5)
+5 는  25 의 약수이다
+```
+
+### Boolean과 not을 활용하자
+
+파이썬은 모든 객체를 True 혹은 False로 평가할 수 있다. 파이썬의 모든 빈 컬렉션이나 None인 컬렉션을 Boolean으로 테스트하면 False다.
+
+```python
+if not my_str:
+    break
+```
+
+다음 규칙을 따른다.
+
+* 데이터가 존재하는 컬렉션이나 문자열은 True다.
+* 길이가 0인 컬렉션이나 문자열은 False다. 값이 0인 숫자도 False다.
+
+### 문자열은 문자의 나열로 다루자
+
+각각의 문자들을 연산하여 문자열을 만들 때에는 문자\(길이 1\)로 이루어진 리스트를 생성하여 join과 함께 리스트 함축을 사용하는 것이 효율적일 수 있다.
+
+회문\(palindrome, 팰린드롬\)을 예로 보자.
+
+```python
+def palindrome():
+    test_str = input('Enter test string: ')
+    a_list = [c.upper() for c in test_str if c.isalnum()]
+    print(a_list == a_list[::-1])
+```
+
+실행 결과는 다음과 같다.
+
+```python
+>>> palindrome()
+Enter test string: A man, a plan, a canal, Panama!
+True
+```
+
+### replace를 사용하여 문자를 제거하자
+
+문자열에서 특정 문자를 빠르게 제거하려면 replace 함수를 사용하여 해당 문자를 빈 문자열로 교체해 보자.
+
+```python
+s = s.replace(' ', '')
+```
+
+만약 한 번에 모든 모음을 삭제하고 싶다면 다음과 같이 리스트 함축을 사용해야 한다.
+
+```python
+s_list = [c for c in s if not 'aeiou']
+s = ''.join(s_list)
+```
+
+### 필요 없는 루프는 사용하지 말자
+
+파이썬에 내장된 기능을 활용하여 리스트와 문자열을 다룰 때에는 불필요한 루프 사용을 줄이자. 다음과 같이 루프 없이 합을 구할 수 있다.
+
+```python
+def calc_triangle_num(n):
+    return sum(range(n+1))
+```
+
+다음은 평균값을 빠르게 구할 수 있다.
+
+```python
+def get_avg(a_list):
+    return sum(a_list) / len(a_list)
+```
+
+### 연결된 비교 연산자를 사용하자
+
+```python
+if 0 < x < 100:
+    print('x is in range.')
+```
+
+비교 대상의 개수에 제한이 없으며, 화살표 방향은 동일한 방향을 바라볼 필요도 없고 어떤 순서로도 나열할 수 있다.
+
+```python
+a, b, c = 5, 10, 15
+if 0 < a <= c > b > 1:
+    print('True')
+```
+
+다음과 같이 나열된 변수 값의 동일 유무를 판단하는 데도 사용할 수 있다.
+
+```python
+a = b = c = d = e = 100:
+if a == b == c == d == e:
+    print('all the same.')
+```
+
+리스트 크기와 무관하게 다음과 같이 테스트할 수 있다.
+
+```python
+if min(a_list) == max(a_list):
+    print('all the elements are equalt')
+```
+
+### 함수 테이블\(리스트, 딕셔너리\)로 switch 문을 모방하자
+
+사용자가 입력한 숫자에 따라 서로 다른 함수를 호출하는 경우가 있다고 해보자.
+
+```python
+if n == 1:
+    do_plot(stockdf)
+elif n == 2:
+    do_highlow_plot(stockdf)
+elif n == 3:
+    do_volume_subplot(stockdf)
+elif n == 4:
+    do_movingavg_plot(stockdf)
+```
+
+파이썬 함수는 객체이며, 다른 객체와 같이 리스트의 항목으로 넣을 수 있다.
+
+```python
+fn = [do_plot, do_highlow_plot, do_volume_subplot, do_movingavg_plot][n-1]
+fn(stockdf) # 함수 호출
+```
+
+또한, 함수들을 딕셔너리와 조합하면 조금 더 유연하게 제어할 수 있다. 예를 들어 'load', 'save', 'update', 'exit'와 같은 메뉴 함수가 있다고 해보자.
+
+```python
+menu_dict = {'load':load_fn, 'save':save_fn, 'exit':exit_fn, 'update':update_fn}
+(menu_dict[selector])() # 함수 호출
+```
+
+### is 연산자 올바르게 사용하기
+
+파이썬은 동등 비교 연산자\(==\)와 is 연산자를 모두 지원한다. 두 문자열이 같은 내용이더라도 메모리상에 동일한 객체를 참조하고 있지 않으면 is 연산자는 False를 반환한다.
+
+is 연산자를 제공하는 이유는 파이썬이 None, True, False와 같은 독특한 객체를 가지고 있기 때문이다. 동일한 객체의 값을 비교하고 있다는 것이 확실하다면 is 키워드를 사용하는 것은 효율적이다.
+
+```python
+a_value = my_function()
+if a_value is None:
+    # None이 반환되면 실행
+```
+
+### 단일 행 for 루프를 사용하자
+
+간략한 for 루프라면 한 줄로 작성하자.
+
+```python
+>>> for i in range(10): print(i, end=' ')
+... 
+0 1 2 3 4 5 6 7 8 9
+```
+
+### 여러 문장을 하나의 행으로 줄이자
+
+코드의 문장들이 충분히 짧다면 한 줄로 작성하자.
+
+```python
+>>> for i in range(5): n = i * 2; m = 1; print(n+m, end=' ')
+... 
+1 3 5 7 
+```
+
+### 단일 행 if/then/else 문을 쓰자
+
+이 기능은 인라인 if 조건이라고 한다.
+
+```python
+turn = 0
+...
+if turn % 2:
+    cell = 'X'
+else:
+    cell = 'O'
+```
+
+if/then/else 문을 써보자.
+
+```python
+cell = 'X' if turn % 2 else 'O'
+```
+
+### range와 함께 enum을 생성하자
+
+열거식\(enumerated, 'enum'\) 타입을 사용하는 것이 좋다.
+
+```python
+red, blue, green, black, white = range(1, 6)
+```
+
+### IDLE 안에서 비효율적인 print 함수 사용을 줄이자
+
+IDLE 안에서 호출한 print 문 실행 속도는 매우 느리기 때문에 각 문자를 개별적으로 출력하기 보다 한 번에 출력하는 것이 좋다.
+
+```python
+for i in range(10):
+    for j in range(5):
+        print('*', end='')
+    print()
+```
+
+위 방법 보다 다음이 더 효율적이다.
+
+```python
+row = '*' * 5
+for i in range(10):
+    print(row)
+```
+
+위 방법보다 문자열을 만들고 출력하는 것이 더 효율적이다.
+
+```python
+row = '*' * 5
+s = ''
+for i in range(10):
+    s += row + '\n'
+    
+print(s)
+```
+
+위 방법보다 join 메서드를 활용하는 것이 더 효율적이다.
+
+```python
+row = '*' * 5
+row_list = []
+for i in range(10):
+    row_list.append(row)
+print('\n'.join(row_list))
+```
+
+다음과 같이 한 줄로 작성 가능하다.
+
+```python
+print('\n'.join(['*' * 5] * 10))
+```
+
+### 큰 수 안에 언더스코어를 넣자
+
+```python
+CEO_salary = 1000000
+CEO_salary = 1_000_000
+```
+
+다음 규칙을 따른다
+
+* 한 번에 언더스코어 2개를 사용할 수 없다.
+* 맨 앞 혹은 맨 뒤에 사용할 수 없다.
+* 실수의 정수나 소수점 양쪽에 모두 사용할 수 있다.
+
