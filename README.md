@@ -10,8 +10,8 @@ description: What I Know For Sure
 
 ### AWS
 
-* [Amazon EKS](aws/aws-eks/)
-* [AWS Cloud9](aws/aws-cloud9/)
+* [Amazon EKS](aws/aws-services/aws-eks/)
+* [AWS Cloud9](aws/aws-services/aws-cloud9/)
 
 
 

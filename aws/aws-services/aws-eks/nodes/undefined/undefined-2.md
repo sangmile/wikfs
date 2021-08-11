@@ -19,5 +19,5 @@ Amazon EKS 노드 kubelet 데몬은 사용자를 대신하여 AWS API를 호출�
 위에서 CloudFormation으로 생성한 IAM role에는 AmazonEKS\_CNI\_Policy 정책이 포함되어 있습니다. CNI 플러그인에 사용되는 aws-node ServiceAccount에 이 정책을 할당하는 것이 좋습니다.
 {% endhint %}
 
-![CloudFormation&#xC73C;&#xB85C; &#xC0DD;&#xC131;&#xD55C; IAM role&#xC5D0; &#xBD80;&#xC5EC;&#xB41C; policy](../../../../.gitbook/assets/image%20%2818%29.png)
+![CloudFormation&#xC73C;&#xB85C; &#xC0DD;&#xC131;&#xD55C; IAM role&#xC5D0; &#xBD80;&#xC5EC;&#xB41C; policy](../../../../../.gitbook/assets/image%20%2818%29.png)
 

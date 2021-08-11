@@ -8,7 +8,7 @@ Kubernetes ServiceAccount가 AWS 리소스에 액세스할 수 있도록 클러�
 
 3. Add Provider 선
 
-![](../../../.gitbook/assets/image%20%288%29.png)
+![](../../../../.gitbook/assets/image%20%288%29.png)
 
 4. Provider type: OpenID Connect 선택
 
@@ -16,7 +16,7 @@ Kubernetes ServiceAccount가 AWS 리소스에 액세스할 수 있도록 클러�
 
 6. Audience에 `sts.amazonaws.com`을 입력하고 Add provider를 클릭합니다.
 
-![OpenID Connect Provider &#xC0DD;&#xC131;](../../../.gitbook/assets/image%20%281%29.png)
+![OpenID Connect Provider &#xC0DD;&#xC131;](../../../../.gitbook/assets/image%20%281%29.png)
 
-![EKS Detail Screenshot](../../../.gitbook/assets/image%20%2812%29.png)
+![EKS Detail Screenshot](../../../../.gitbook/assets/image%20%2812%29.png)
 

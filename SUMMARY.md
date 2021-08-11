@@ -4,22 +4,22 @@
 
 ## AWS
 
-* [AWS Services](aws/aws-services.md)
-* [AWS Elastic Beanstalk](aws/aws-elastic-beanstalk.md)
-* [AWS Storage Gateway](aws/aws-storage-gateway.md)
-* [AWS Trusted Advisor](aws/aws-trusted-advisor.md)
-* [Amazon EKS](aws/aws-eks/README.md)
-  * [Nodes](aws/aws-eks/nodes/README.md)
-    * [관리 노드 그룹](aws/aws-eks/nodes/undefined/README.md)
-      * [노드 IAM role](aws/aws-eks/nodes/undefined/undefined-2.md)
-      * [시작하기](aws/aws-eks/nodes/undefined/undefined.md)
-    * [AWS Fargate](aws/aws-eks/nodes/aws-fargate/README.md)
-      * [시작하기](aws/aws-eks/nodes/aws-fargate/undefined.md)
-  * [Cluster authentication](aws/aws-eks/undefined/README.md)
-    * [유저 관리](aws/aws-eks/undefined/undefined.md)
-    * [IAM OpenID Connect\(OIDC\) Provider](aws/aws-eks/undefined/iam-openid-connect-oidc-provider.md)
-* [AWS Cloud9](aws/aws-cloud9/README.md)
-  * [Credentials 옵션](aws/aws-cloud9/credentials.md)
+* [AWS Services](aws/aws-services/README.md)
+  * [AWS Cloud9](aws/aws-services/aws-cloud9/README.md)
+    * [Credentials 옵션](aws/aws-services/aws-cloud9/credentials.md)
+  * [Amazon EKS](aws/aws-services/aws-eks/README.md)
+    * [Nodes](aws/aws-services/aws-eks/nodes/README.md)
+      * [관리 노드 그룹](aws/aws-services/aws-eks/nodes/undefined/README.md)
+        * [노드 IAM role](aws/aws-services/aws-eks/nodes/undefined/undefined-2.md)
+        * [시작하기](aws/aws-services/aws-eks/nodes/undefined/undefined.md)
+      * [AWS Fargate](aws/aws-services/aws-eks/nodes/aws-fargate/README.md)
+        * [시작하기](aws/aws-services/aws-eks/nodes/aws-fargate/undefined.md)
+    * [Cluster authentication](aws/aws-services/aws-eks/undefined/README.md)
+      * [유저 관리](aws/aws-services/aws-eks/undefined/undefined.md)
+      * [IAM OpenID Connect\(OIDC\) Provider](aws/aws-services/aws-eks/undefined/iam-openid-connect-oidc-provider.md)
+  * [AWS Trusted Advisor](aws/aws-services/aws-trusted-advisor.md)
+  * [AWS Storage Gateway](aws/aws-services/aws-storage-gateway.md)
+  * [AWS Elastic Beanstalk](aws/aws-services/aws-elastic-beanstalk.md)
 
 ## Kubernetes
 
