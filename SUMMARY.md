@@ -59,5 +59,6 @@
   * [파이썬 기초](python/python/undefined.md)
   * [고급 문자열 기능](python/python/undefined-1.md)
   * [고급 리스트 기능](python/python/undefined-2.md)
-  * [팁, 커맨드라인, 그리고 패키지](python/python/undefined-4.md)
+  * [팁, 커맨드라인, 그리고 패키지](python/python/undefined-4/README.md)
+    * [22가지 프로그래밍 팁](python/python/undefined-4/22.md)
 
