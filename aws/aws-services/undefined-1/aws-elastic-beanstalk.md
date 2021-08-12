@@ -2,9 +2,13 @@
 
 ## What is Elastic Beanstalk?
 
-애플리케이션을 업로드하기만 하면 Elastic Beanstalk에서 용량 프로비저닝, 로드 밸런싱, 조정, 애플리케이션 상태 모니터링에 대한 세부 정보를 자동으로 처리합니다.
+
 
 Elastic Beanstalk는 Go, Java, .NET, Node.js, PHP, Python 및 Ruby에서 개발된 애플리케이션을 지원합니다.
 
 Elastic Beanstalk를 사용하려면 애플리케이션을 생성하고, 애플리케이션 소스 번들\(예: .war 파일\)로 애플리케이션 버전을 Elastic Beanstalk에 업로드합니다.
+
+AWS Elasic Beanstalk는 실행 환경 등에 대한 고민 없이 웹 애플리케이션을 실행 및 관리할 수 있는 서비스로 Apache, Ngninx 등 서버에 Java, .NET PHP, Node.js, Python, Ruby, Go, Docker 기반의 애플리케이션을 배포할 수 있다.
+
+애플리케이션을 업로드하기만 하면 Elastic Beanstalk가 배포, 로드 밸런싱, 오토스케이링, 애플리케이션 상태 모니터링에 대한 세부 정보를 자동으로 처리합니다.
 
