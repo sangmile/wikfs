@@ -26,6 +26,7 @@
     * [AWS Cloud9](aws/aws-services/undefined-2/aws-cloud9/README.md)
       * [Credentials 옵션](aws/aws-services/undefined-2/aws-cloud9/credentials.md)
   * [보안 및 자격증명](aws/aws-services/undefined/README.md)
+    * [AWS KMS](aws/aws-services/undefined/aws-kms.md)
     * [AWS WAF](aws/aws-services/undefined/aws-waf.md)
     * [AWS Shield](aws/aws-services/undefined/aws-shield.md)
     * [AWS Single Sign-On](aws/aws-services/undefined/aws-single-sign-on.md)
