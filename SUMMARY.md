@@ -63,4 +63,6 @@
   * [고급 리스트 기능](python/python/undefined-2.md)
   * [팁과 패키지](python/python/undefined-4/README.md)
     * [22가지 프로그래밍 팁](python/python/undefined-4/22.md)
+    * [doc string 작성](python/python/undefined-4/doc-string.md)
+    * [패키지 탑재](python/python/undefined-4/undefined.md)
 
