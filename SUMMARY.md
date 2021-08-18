@@ -46,6 +46,7 @@
 
 ## Kubernetes
 
+* [CustomResourceDefinition](kubernetes/customresourcedefinition.md)
 * [쿠버네티스 애플리케이션 개발](kubernetes/undefined-3.md)
 * [매니페스트 버전 관리](kubernetes/undefined-2.md)
 * [파드 라이프사이클](kubernetes/undefined.md)
