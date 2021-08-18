@@ -47,6 +47,7 @@
 ## Kubernetes
 
 * [애플리케이션 개발을 위한 모범 사례](kubernetes/undefined.md)
+* [쿠버네티스 애플리케이션 관리](kubernetes/undefined-1.md)
 * [Kubeadm](kubernetes/kubeadm.md)
 
 ## IaC
