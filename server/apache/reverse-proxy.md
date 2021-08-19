@@ -1,6 +1,6 @@
-# Reverse Proxy
+# mod\_proxy
 
-## mod\_proxy Module
+## ProxyPass와 ReverseProxyPass
 
 ProxyPass와 ReverseProxyPass 지시자를 함께 사용하자.
 

@@ -80,7 +80,7 @@
 * [Nginx](server/nginx/README.md)
   * [rewriterule](server/nginx/rewriterule.md)
 * [Apache](server/apache/README.md)
-  * [Reverse Proxy](server/apache/reverse-proxy.md)
+  * [mod\_proxy](server/apache/reverse-proxy.md)
 * [WEB/WAS](server/web-was.md)
 
 ## SYSTEM
