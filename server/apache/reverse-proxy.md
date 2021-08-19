@@ -41,3 +41,15 @@ ProxyPassReverse가 없다면 `http://backend.com/baz`와 같이 리다이렉트
 
 이러한 이유로 함께 설정하는 것을 권장한다.
 
+## ProxyPreserveHost
+
+이 옵션을 선택하면 ProxyPass 행에 지정된 호스트 이름 대신 들어오는 요청에서 프록시 호스트로 Host: 부분을 전달한다.
+
+ProxyPreserveHost는 Apache가 원래 호스트 헤더를 백엔드 서버로 전달하도록 합니다. 이것은 백엔드 서버가 응용프로그램에 액세스하는 데 사용되는 주소를 인식하도록 하기 때문에 유용합니다.
+
+## ProxyRequests
+
+ProxyRequests 지시자는 ProxyPass를 사용하면 해제한다. forward proxy를 사용할 경우 On으로 설정한다.
+
+
+
