@@ -25,13 +25,13 @@ http://reverseproxy.com/foo/bar
 http://backend.com/bar
 ```
 
-요청을 처리한 후 리다이렉트 등의 이유로 URL이 아래와 같이 수정되어 리턴었다고 하자.
+요청을 처리한 후 리다이렉트 등의 이유로 URL이 아래와 같이 수정되어 리턴되었다고 해보자.
 
 ```text
 http://backend.com/baz
 ```
 
-위 URL은 ProxyPassReverse 설정에 의해서 아래 URL로 처리되어 Client 쪽 전달헤더에도 아래 주소가 전달될 것이다.
+위 URL은 ProxyPassReverse 설정에 의해서 아래 URL로 처리되어 Client 쪽 전달헤더에도 아래 주소가 전달된다.
 
 ```text
 http://reverseproxy.com/foo/bar/baz
