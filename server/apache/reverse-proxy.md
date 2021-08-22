@@ -39,7 +39,7 @@ http://reverseproxy.com/foo/bar/baz
 
 ProxyPassReverse가 없다면 `http://backend.com/baz`와 같이 리다이렉트 될 것이며 브라우저는 해당 URL을 바라보게 된다.
 
-이러한 이유로 함께 설정하는 것을 권장한다.
+이러한 이유로 함께 설정하는 것이 좋한다.
 
 ## ProxyPreserveHost
 
