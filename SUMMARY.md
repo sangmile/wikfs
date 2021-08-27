@@ -62,6 +62,7 @@
 ## PYTHON
 
 * [Python](python/python/README.md)
+  * [decorator](python/python/decorator.md)
   * [variable-length argument list](python/python/variable-length-argument-list.md)
   * [파이썬 기초](python/python/undefined.md)
   * [고급 문자열 기능](python/python/undefined-1.md)
